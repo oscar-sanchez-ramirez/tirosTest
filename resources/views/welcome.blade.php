@@ -86,7 +86,7 @@
         @endif
 
         <div class="content">
-            <div class="title m-b-md animate__animated animate__backInDown">
+            <div class="title m-b-md animate__animated animate__pulse animate-repeat">
                 TIROS
             </div>
            <p class="animate__animated animate__backInUp">NACH</p> 
