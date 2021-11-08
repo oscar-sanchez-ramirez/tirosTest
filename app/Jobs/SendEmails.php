@@ -17,6 +17,7 @@ class SendEmails implements ShouldQueue
     // public $tries = 8;
     protected $emails;
     protected $title;
+    public $timeout = 0;
 
     /**
      * Create a new job instance.
