@@ -13,8 +13,9 @@ use Illuminate\Support\Facades\Mail;
 class SendEmails implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    
-    protected $email;
+
+    // public $tries = 8;
+    protected $emails;
     protected $title;
 
     /**
@@ -22,11 +23,10 @@ class SendEmails implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($email, $title)
+    public function __construct($emails, $title)
     {
-        $this->email = $email;
+        $this->emails = $emails;
         $this->title = $title;
-
     }
 
     /**
@@ -36,7 +36,10 @@ class SendEmails implements ShouldQueue
      */
     public function handle()
     {
-        $email = new ListMail($this->title);
-        Mail::to($this->email)->send($email);
+        foreach ($this->emails as $email) {
+            $mail = new ListMail($this->title);
+            Mail::to($email)->send($mail);
+            sleep(8);
+        }
     }
 }

@@ -31,10 +31,10 @@ class ListMail extends Mailable
     public function build()
     {
         return $this->from('admin@gruponach.com', 'Administrador')
-            ->subject($this->title)
-            ->view('emails.email')
-            ->with([
-                'title' => $this->title
-            ]);
+        ->subject($this->title)
+        ->view('emails.email')
+        ->with([
+            'title' => $this->title
+        ]);
     }
 }
